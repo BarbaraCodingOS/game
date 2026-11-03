@@ -1,42 +1,39 @@
-# Northreach IV verification — 2026-11-03
+# Northreach IV 4.1 verification — 2026-11-03
 
-- 24 physics/combat/progress/settings tests passed in the final model test run.
-- All 13 distinct browser cases passed across the full run and targeted retests.
-  These cover imported-world startup, menu/continue/new play, movement/jumping,
-  climbing/gliding/dodge, timed barrel and enemy hits, rewards/save/reload, actual
-  regional quest interactions, final story completion, ferry travel both ways,
-  map controls, mobile layout, settings/rebinding, extracted-ZIP startup and
-  missing-code/stylesheet diagnostics.
-- Story integration uses regional saved-state fixtures for enemy prerequisites;
-  it verifies live interactions through all chapter transitions, not a claim of
-  one uninterrupted manual playthrough. Enemy combat is separately exercised by
-  timed model tests and actual keyboard attacks on a pursuing sentinel.
-- Visual review caught and fixed a SkeletonUtils clone/bind-matrix bounds issue
-  that scaled the character incorrectly. A browser regression check verifies its
-  measured body height is between 1.6 and 2.1 meters (target 1.82 m).
-- A nearby bench initially won the final beacon's interaction. Unlit beacons with
-  sufficient shards now receive a distance priority; the final sequence retest
-  completes Chapter V. Checkpoints store elevation to avoid respawning on roofs.
-- Actual ZIP extraction to a path with spaces and file:// launch passed in
-  Firefox 140.15.0: styles, WebGL, V4, imported models, movement, barrel loot,
-  world map, waypoints and High-detail rendering, with zero HTTP/HTTPS requests
-  and no game-page script/rendering errors.
-- The final complete single HTML was copied by itself to an otherwise empty
-  folder and passed the same real-file test. Reused Firefox sessions delivered
-  buffered permission errors from a previous document's realm, despite a scoped
-  browsing-context subscription. The harness now checks this document's realm
-  and also installs early error/unhandled-rejection listeners. Both final native
-  file tests passed with clear page logs and diagnostics. No origin security or
-  file-access policies were relaxed.
-- Chromium 155 tests the extracted ZIP through a local static server. The cloud's
-  managed Chromium file-URL policy is unchanged; Firefox verifies actual file URLs.
-- All 47 runtime GLB files match their recorded hashes. Kit archive path checks
-  reject traversal/symlinks and supplied manifests were checked where available.
-- Oak/alder distant images are 384×512 PNG with genuine transparent pixels.
-- The single HTML contains two inline scripts and two inline styles, with no
-  external script/stylesheet links. ZIP integrity and runtime checksums match.
+- 29 model tests passed, including humanoid bone aliases, clip roles, safe archive
+  paths, root-motion locking and multi-mesh bone sharing/inverse-bind retention.
+- Nine browser cases passed together: GLB replacement/export/save/reload/reset;
+  a RAR above 32 MiB with a rigged multi-mesh FBX; bad-file recovery; menu/movement/
+  jump/pause/checkpoint/map; settings/rebinding persistence; mobile layout/input;
+  extracted production startup; and useful missing-script/stylesheet diagnostics.
+- The multi-mesh fixture exposed duplicate FBX bone hierarchies. Matching rest
+  bones are now shared, their canonical parent chains reconnected and animation
+  targets uniquely named. The 20-bone, ten-mesh fixture then imported and played.
+- The live preview also passed the three character browser cases. A final native
+  file-URL test opened it after High world shadows were enabled and exercised Run
+  without shader or rendering errors. Preview materials are independent of world
+  cascade defines.
+- After final resource cleanup changes, actual Firefox 140.15.0 file-URL testing
+  imported a 35,331,784-byte RAR containing FBX plus a PNG texture. Its worker and
+  WASM decoder ran offline, applied the player and saved a portable GLB in browser
+  storage. Reset restored the normal player without touching journey progression.
+- The complete HTML was copied alone into an empty folder with spaces and passed
+  native file-URL startup, CSS/WebGL/assets, movement, loot, map, waypoint and High
+  rendering checks. No HTTP/HTTPS runtime requests or game-page errors occurred.
+- The exact folder ZIP was extracted, its runtime checksums verified and the same
+  native file-URL gameplay/High-rendering checks passed. Browser file/origin
+  security policies were unchanged. Page logs are scoped to the current document.
+- A fallback texture PNG with an invalid checksum was caught and replaced with a
+  valid generated pixel. Loaded file buffers and temporary blob URLs are released
+  after parsing; they are not retained for the lifetime of the game.
+- The large archive/blue humanoid/PNG are authored test fixtures. They are not
+  representations of the user's inaccessible Lost Warrior files or shipped as
+  the default character. Exact source FBX/texture/animation compatibility remains
+  unverified until local import or access to the original source is available.
+- The 47 supplied runtime environment GLBs remain byte-identical to their asset
+  manifest. Far-tree PNGs were re-rendered at 512×512 with genuine alpha and
+  uncropped canopy framing. The graphics were visually checked in actual frames.
 
-Performance data are in performance.json. Software-renderer timing is not a Mac
-GPU benchmark. Human listening quality and the user's Brave/device performance
-have not been measured. The inaccessible Lost Warrior files and animation/engine
-limits are listed in implementation.md.
+The earlier V4 report documents regional storyline/combat integration tests.
+This release did not claim a new uninterrupted manual five-chapter playthrough.
+Performance and test limits are recorded in performance.json and implementation.md.

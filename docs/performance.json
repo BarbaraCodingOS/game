@@ -1,92 +1,8 @@
 {
   "date": "2026-11-03",
-  "method": "Same Chromium 155, 1280x800 viewport, cloud SwiftShader software renderer. Short forward-walking sample after startup; timing includes browser scheduling and software rasterization. V3 performance preset versus V4 Low. These are different scene contents and short samples, not a controlled hardware benchmark.",
-  "baselineV3": {
-    "browser": "155.0.8059.79",
-    "viewport": [
-      1280,
-      800
-    ],
-    "renderer": "SwiftShader software (cloud, not target desktop GPU)",
-    "meanFrameMs": 793.0166666666668,
-    "p95FrameMs": 866.6000000000004,
-    "frames": 12,
-    "tier": "performance",
-    "metrics": null,
-    "hotFunctions": [
-      {
-        "name": "(program)",
-        "url": "",
-        "samples": 5092
-      },
-      {
-        "name": "unlock",
-        "url": "game.js",
-        "samples": 48
-      },
-      {
-        "name": "ee",
-        "url": "game.js",
-        "samples": 4
-      },
-      {
-        "name": "noise",
-        "url": "game.js",
-        "samples": 2
-      },
-      {
-        "name": "interpolate_",
-        "url": "game.js",
-        "samples": 2
-      },
-      {
-        "name": "Tt",
-        "url": "game.js",
-        "samples": 2
-      },
-      {
-        "name": "Lm",
-        "url": "game.js",
-        "samples": 1
-      },
-      {
-        "name": "evaluate",
-        "url": "game.js",
-        "samples": 1
-      },
-      {
-        "name": "accumulate",
-        "url": "game.js",
-        "samples": 1
-      },
-      {
-        "name": "slerpFlat",
-        "url": "game.js",
-        "samples": 1
-      },
-      {
-        "name": "updateMatrix",
-        "url": "game.js",
-        "samples": 1
-      },
-      {
-        "name": "compose",
-        "url": "game.js",
-        "samples": 1
-      },
-      {
-        "name": "updateMatrixWorld",
-        "url": "game.js",
-        "samples": 1
-      },
-      {
-        "name": "multiplyMatrices",
-        "url": "game.js",
-        "samples": 1
-      }
-    ]
-  },
-  "finalV4": {
+  "version": "4.1",
+  "method": "Chromium 155, 1280x800, Low preset, cloud SwiftShader software rasterizer. Short forward-walking sample after startup. The workspace restarted before the V4.1 sample; scheduling/cache conditions and scene contents differ from V4. These are not controlled hardware-GPU or imported-Lost-Warrior benchmarks.",
+  "baselineV4": {
     "browser": "155.0.8059.79",
     "viewport": [
       1280,
@@ -189,33 +105,133 @@
       }
     ]
   },
-  "comparison": {
-    "baselineMeanFrameMs": 793.02,
-    "finalMeanFrameMs": 809.68,
-    "meanFrameChangePercent": 2.1,
-    "finalApproxFps": 1.24,
-    "interpretation": "Software rendering remains the bottleneck. The final sample is about 2% slower than V3; no FPS improvement is established. Earlier V4 samples varied around 0.8\u20130.9 seconds/frame. New visual/gameplay work fits within similar cloud rendering cost, but this is far below playable frame rates on this software-only machine."
+  "finalV41": {
+    "browser": "155.0.8059.79",
+    "viewport": [
+      1280,
+      800
+    ],
+    "renderer": "SwiftShader software (cloud, not target desktop GPU)",
+    "meanFrameMs": 601.1714285714287,
+    "p95FrameMs": 683.3000000000029,
+    "frames": 14,
+    "tier": "low",
+    "metrics": {
+      "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "software": true,
+      "frames": 30,
+      "meanFrameMs": 634.0300000000001,
+      "p95FrameMs": 683.3000000000029,
+      "updateMs": 1.0999999977648258,
+      "renderSubmitMs": 3.800000000745058,
+      "drawCalls": 151,
+      "triangles": 341765,
+      "grass": {
+        "cached": 30,
+        "queued": 0,
+        "lastBuildMs": 0.09999999776482582,
+        "maxBuildMs": 5.100000001490116
+      },
+      "cascades": 0,
+      "terrainChunks": 59
+    },
+    "hotFunctions": [
+      {
+        "name": "(program)",
+        "url": "",
+        "samples": 4555
+      },
+      {
+        "name": "kt",
+        "url": "game.js",
+        "samples": 4
+      },
+      {
+        "name": "accumulate",
+        "url": "game.js",
+        "samples": 3
+      },
+      {
+        "name": "updateMatrixWorld",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "a",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "f",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "setValue",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "v",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "",
+        "url": "",
+        "samples": 1
+      },
+      {
+        "name": "fv",
+        "url": "game.js",
+        "samples": 1
+      },
+      {
+        "name": "m",
+        "url": "game.js",
+        "samples": 1
+      },
+      {
+        "name": "updateMatrixWorld",
+        "url": "game.js",
+        "samples": 1
+      },
+      {
+        "name": "updateMatrixWorld",
+        "url": "game.js",
+        "samples": 1
+      },
+      {
+        "name": "updateMatrixWorld",
+        "url": "game.js",
+        "samples": 1
+      }
+    ]
   },
-  "cpuAndScene": {
-    "lastSampleUpdateMs": 0.9,
-    "lastSampleRenderSubmissionMs": 3.6,
-    "maxObservedGrassPatchBuildMs": 0.9,
-    "drawCalls": 155,
-    "triangles": 310933,
-    "terrainSections": 59,
-    "note": "CPU values are the last telemetry sample, not average or tail-latency guarantees. Render submission time is not GPU execution time. Rolling in-game frame statistics also include startup warmup; use the separate frame-sample fields for the walking comparison."
+  "observed": {
+    "baselineMeanFrameMs": 809.68,
+    "finalMeanFrameMs": 601.17,
+    "finalP95FrameMs": 683.3,
+    "approxFps": 1.66,
+    "lastUpdateMs": 1.1,
+    "lastRenderSubmissionMs": 3.8,
+    "drawCalls": 151,
+    "triangles": 341765,
+    "grassMaxObservedPatchBuildMs": 5.1
   },
-  "optimizations": [
-    "Material/geometry batching and instancing preserve original GLB textures, vertex colors and extra UV channels.",
-    "Bounded grass LRU cache, velocity-biased queue and 1.6ms generation budget.",
-    "Actual oak/alder model impostors and movement-threshold instance updates.",
-    "Prebuilt/frustum-culled terrain sections with matching physics.",
-    "Nearest-three pooled local lights; scalable cascaded shadows, AO and planar water refresh.",
-    "Low disables shadows, reflections and postprocessing and lowers resolution/vegetation."
-  ],
+  "interpretation": "The 4.1 software sample was 601 ms/frame (~1.66 FPS), versus 810 ms/frame in the earlier V4 sample. The restart and short samples prevent attributing that difference to code or claiming a stable FPS gain. Software rendering remains far below playable frame rates on this cloud machine. The last sampled game update was 1.1 ms; native GPU execution time was not measured.",
   "limits": [
-    "No target Mac or Brave hardware-GPU benchmark was available. Stable 60 FPS is unverified.",
-    "High/Ultra render correctness was tested; their hardware frame rates were not measured.",
-    "Brief samples are sensitive to warmup and cloud scheduling; do not interpret small differences as a performance gain."
+    "Mac/Brave hardware performance and stable 60 FPS remain unverified.",
+    "The exact Lost Warrior geometry, texture load and animation compatibility were inaccessible and were not benchmarked.",
+    "High detail rendered correctly in native file-URL checks; its target-device frame rate was not measured.",
+    "The grass queue checks its 1.6 ms budget between jobs; a single startup/JIT/scheduled patch reached 5.1 ms. This is a cooperative budget, not a hard upper bound.",
+    "Imported model parsing/export is a one-time paused operation. Decoder work runs in a worker; FBX parsing and GLB export can still take time on the main thread."
+  ],
+  "resourceChanges": [
+    "Rounded boulders use four shared instanced meshes.",
+    "One cached outdoor light probe; one transparent contact-shadow draw.",
+    "Tree cards have uncropped 512x512 alpha images.",
+    "Loaded import buffers/blob URLs are released after parsing, before continued gameplay.",
+    "Graphics presets continue to bound vegetation, shadows, reflections and postprocessing."
   ]
 }

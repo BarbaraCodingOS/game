@@ -77,3 +77,23 @@ examples/textures/terrain/grasslight-big.jpg; sRGB color maps and linear normal
 map data are treated separately. All original photo-surface credits above apply.
 New terrain blending, grass geometry, weather/sky/water shader extensions,
 quests, combat, interfaces and procedural audio were created for Northreach.
+
+V4.1 LOCAL CHARACTER IMPORT AND GRAPHICS
+The five new Lost Warrior RAR uploads again exceed the chat transfer tool's
+32 MiB limit; their contents were not available for inspection here. The game
+now provides a local-only character importer for the player's own FBX, animation
+and texture archives/folders. No Lost Warrior geometry is claimed to be bundled
+before that import. Imported models remain on the player's computer/browser.
+
+RAR decoding: node-unrar-js 2.0.2 by Jianrong Yu (MIT wrapper; license included).
+https://github.com/YuJianrong/node-unrar.js
+Its WebAssembly decoder uses the UnRAR library. The UnRAR source license is
+included as UNRAR-LICENSE.txt; it is used only for decompression, not RAR creation.
+License text source: https://github.com/pmachapman/unrar/blob/master/license.txt
+Three.js FBX/OBJ/MTL/TGA/DDS loaders, SkeletonUtils and GLTFExporter are covered by
+the included Three.js license. Source-model rights continue to apply to imports.
+
+The blue humanoid used for import regression tests is an authored synthetic
+fixture, not Lost Warrior. It is not bundled as the game's default character.
+Rounded landscape rocks, the outdoor sky-light probe and contact-shadow texture
+are procedural. Tree impostors were re-rendered at 512x512 with uncropped framing.

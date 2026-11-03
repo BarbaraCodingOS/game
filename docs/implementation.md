@@ -1,75 +1,72 @@
-# Northreach IV — implementation and limits
+# Northreach IV 4.1 — local warrior import and graphics
 
-The user's 25 KB V4 brief is the task specification. Forty environment uploads
-were downloaded. Archive paths/symlinks were checked, files were extracted without
-executing their helper scripts, and available kit manifest hashes were verified.
-47 selected self-contained GLBs are embedded in the runtime. Original authored
-node transforms are retained in templates and baked once for static material
-batching. The world includes 216+ prop instances plus instanced trees/undergrowth.
+The five reuploaded Lost Warrior RARs each exceeded the upload-download tool's
+32 MiB transfer cap. They were not downloaded or inspected. No exact Lost Warrior
+model or animation is claimed to be preinstalled in this release.
 
-## Implemented
+## Working import route
 
-- Shared geometry/material batches, 1,150 supplied oak/alder trees, rendered-tree
-  distant cards with dither transitions, forest understory, reeds, heather and
-  laurel. Instance buffers update by movement thresholds rather than every frame.
-- 59 cached terrain sections, built asynchronously at startup from the same
-  triangle height field used by physics. Sea-floor-only sections are skipped;
-  visible sections are frustum culled. Terrain is ready before entering the world.
-  Structures and models are preloaded, so gameplay doesn't wait for them to fetch.
-- Small curved grass blades, clustered growth/bare patches, wind, local bending
-  with a short recovery trail, distance fade and a bounded LRU patch cache. The
-  queue is prioritized toward player velocity and processed with a per-frame
-  generation budget. This is a finite 1.2 km map, not an infinite streamed world.
-- Photographic ground surfaces blended by slope/elevation/trails, triplanar rock,
-  source-material PBR assets, environment illumination, soft sun shadows and
-  two/three cascades at High/Ultra. High offers GTAO and restrained bloom. Distance
-  cards/grass are excluded from the AO normal pass to avoid opaque-card artifacts.
-- Reflective water with Fresnel, multi-scale normal waves, height-field depth
-  color and foam. Reflections use a bounded 512 px target; water settings control
-  refresh rate. These are planar reflections, not ray tracing or screen refraction.
-- Sky/cloud motion, 20-minute daylight cycle, mist/rain settings, night illumination,
-  animated gull silhouettes, ambient wind, and surface-dependent procedural steps.
-- Imported modular village/shops, functional well/bell, named keeper/fisher/ferry
-  NPC interactions, stronghold ruins, mountain grotto, mooring/pier, ships, caches,
-  lookout, coastguard relic and optional driftwood quest. Indoor wall/deck support
-  uses geometry, not whole-assembly solid boxes. There are no furnished dungeon
-  networks, vehicle sailing controls or crowd simulation.
-- Light three-hit combo, heavy attack, input buffer, actual timed hit windows,
-  attack arcs/heights, obstruction checks, stagger, enemy pursuit/return/telegraph,
-  dodge invulnerability, facing-dependent block, healing and death/checkpoint
-  recovery. The Hollow King accelerates below half health. Enemies are awakened
-  effigies/wisps with procedural motion, not newly mocapped humanoids.
-- Five sequential, playable story chapters driven by persistent event flags.
-  Early discoveries count when their chapter becomes current. Main/side objectives
-  and rewards are idempotent. The ferryman makes the northern region accessible.
-- Minimal contextual HUD, cinematic in-engine title scene, Continue/New Game,
-  journal/map/inventory, persistent settings and rebindable action/movement keys.
-  New Game asks before replacing the local save; settings remain independent.
-- Versioned V4 saves, V3 migration when accessible in the browser origin, validated
-  snapshots, previous-good-save backup, automatic safe-position saves, checkpoint
-  altitude and graceful storage-denied behavior. Local-file origins may separate
-  saves by path; moving files/changing browsers does not guarantee save migration.
+Open **Character** from the title or pause menu. Choose LostWarriorFBX.rar,
+Animation.rar and Textures.rar together, then **Use this character**. An extracted
+folder, individual FBX/texture files or a self-contained GLB can also be selected.
+The game processes these files locally; it does not upload them anywhere. There
+is no 32 MiB chat-transfer limit on this local route. Guardrails cap individual
+inputs at 1 GiB and relevant expanded content at 1.5 GiB to bound browser memory.
+Render-only archives and unsupported members are skipped.
 
-## Character limitation
+A bundled worker and WebAssembly UnRAR decoder extract RAR4/RAR5 data in memory.
+Password-protected and split-volume archives report the extracted-folder route.
+FBX/OBJ/MTL/GLTF, PNG/JPEG/WebP/BMP/TGA/DDS are supported. Texture references resolve
+against selected files, including Windows paths and nested texture folders.
+Missing external references never trigger Internet requests. Source rights still
+apply. Raw Blender files, PSD/EXR textures and Draco/KTX2 models are not decoded.
 
-Every uploaded Lost Warrior .rar/.blend file exceeds the download tool's 32 MiB
-transfer cap. They could not be transferred or inspected. A self-contained GLB
-under that cap, with textures and desired clips, is needed to replace the current
-character. The working Mixamo rig remains for player/NPCs with original locomotion
-clips. Playback speed follows actual displacement; combat/guard/aerial/draw poses
-are procedural. Full foot IK, dedicated start/stop/landing/combat clips, and a Lost
-Warrior retarget are not claimed.
+The importer keeps authored root transforms and inverse-bind matrices, normalizes
+the visible body to 1.82 m, matches humanoid bone/clip names and locks root travel
+so animation cannot walk away from collisions. Matching duplicate FBX rest bones
+are shared and reconnected to canonical parents; genuinely different rest rigs
+remain separate. Bone targets receive unique names to avoid body/clothing naming
+collisions. Source clips are used when compatible. Missing recognizable locomotion
+can be adapted from the default rig without copying mismatched hip translations.
+Unrecognized rigs or static OBJ files may have limited/procedural motion; universal
+retargeting, full foot IK and exact Lost Warrior clip compatibility are not claimed.
 
-## Verification and performance
+The Character menu includes a live 3D preview with drag rotation and Idle/Walk/Run/Attack controls. Its separate renderer releases its resources when closed, and preview equipment materials are isolated from the world’s cascaded-shadow state.
 
-See validation.md and performance.json. Cloud tests use software rendering; this
-is not the user's Mac GPU, and a stable 60 FPS on that hardware has not been
-established. High/Ultra are deliberately scalable and cost more than Low/Medium.
+The player is replaced immediately after applying the model. Native attack,
+block/jump/glide/dodge clips are used when recognized; remaining actions retain
+procedural poses. The default character remains for NPCs and until local import.
+Facing controls allow quarter turns. A self-contained GLB with textures capped at
+2048 pixels is saved in IndexedDB when available. The same model loads on the next
+visit in that browser/file origin. Save GLB exports a portable copy. Failed saves
+leave the model usable for the session. Journey saves and model storage are
+separate; restoring the Coastguard does not erase progress.
 
-## Skills applied
+## Graphics changes
 
-The uploaded game-dev collection at /workspace/gamedev-skills informed Three.js
-GLB loading/materials, measured performance work, game feel, RPG event objectives,
-and versioned saves. Three.js remains pinned to r187. Source metadata and licenses
-are preserved in asset-manifest.json and ASSET-CREDITS.txt, including individual
-uploads explicitly marked pending license clearance; no blanket CC0 is asserted.
+- Replaced the indoor studio lighting probe with one cached outdoor sky probe.
+  AgX tone mapping, a warmer key and cooler sky illumination preserve highlights.
+- Added a soft ground-following contact shadow under the player, fading with
+  altitude and hidden during swimming. It also works in Low without shadow maps.
+- Grass has six curved blades per clump, broader silhouettes and varied height,
+  with existing wind, bending, recovery trail, distance fade and cache budget.
+- Ground colors are less brown; height-assisted surface blends, texture-derived
+  normal relief and shoreline roughness add detail without extra terrain meshes.
+- Added 152 instanced, rounded photographic-surface boulders, excluding main paths,
+  settlements and the starting clearing. Their collisions share world physics.
+- Distant tree images were re-rendered to 512×512 with complete canopy framing and
+  matching world-size card geometry; the prior narrow frames cropped wide crowns.
+- Graphics reconfiguration drops disposed postprocess references, and applying a
+  new player registers its materials with cascaded shadows.
+
+The supplied pixel-fantasy environment style remains visible. Texture relief is
+not a new scanned PBR material set, reflections remain planar, and this does not
+claim photorealistic/AAA rendering. High/Ultra cost more than Low/Medium.
+
+## Verification
+
+See validation.md and performance.json for the completed checks and measurements.
+The authored blue humanoid used to test the import route is a synthetic fixture,
+not the user's Lost Warrior, and is not bundled as the default game character.
+The exact five uploaded archives still need a local import/playtest or an
+accessible source URL before their contents can be verified here.
