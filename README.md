@@ -1,10 +1,13 @@
 # Northreach IV — The Broken Oath
 
-[**Download the complete game — one HTML file (39 MB)**](https://github.com/BarbaraCodingOS/game/raw/refs/heads/playtest/northreach-v4-download/Northreach-PLAY.html)
+[**Download the game — self-contained HTML in a ZIP (24 MB)**](https://github.com/BarbaraCodingOS/game/raw/refs/heads/playtest/northreach-v4-download/Northreach-PLAY.zip?download=1)
 
-Save **Northreach-PLAY.html**, then open the saved file in a recent desktop browser.
-Choose **Begin a journey**. Everything is embedded: no ZIP extraction, companion
-files, server or Internet connection is needed. JavaScript and WebGL are required.
+Extract **Northreach-PLAY.zip**, then open **Northreach-PLAY.html** in a recent
+desktop browser. Choose **Begin a journey**. That one HTML file includes all game
+code, textures and models. No companion game files, server or Internet connection
+is needed. JavaScript and WebGL are required. Credits/test reports are included.
+
+[Single HTML directly (39 MB)](https://github.com/BarbaraCodingOS/game/raw/refs/heads/playtest/northreach-v4-download/Northreach-PLAY.html?download=1): GitHub serves this as text. Use **Save link as** or GitHub’s **Download raw file** button to save it.
 
 [Download the whole game as a ZIP (24 MB)](https://github.com/BarbaraCodingOS/game/raw/refs/heads/playtest/northreach-v4-download/Northreach-v4.zip)
 
