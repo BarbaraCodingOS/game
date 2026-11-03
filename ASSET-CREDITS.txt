@@ -1,0 +1,79 @@
+NORTHREACH IV — THIRD-PARTY ASSETS
+
+Three.js code and example texture assets:
+https://github.com/mrdoob/three.js
+Copyright Three.js authors. MIT license (see THREE-LICENSE.txt).
+
+Rock detail: examples/textures/terrain/backgrounddetailed6.jpg (r110)
+Timber: examples/textures/hardwood2_diffuse.jpg (dev)
+Masonry: examples/textures/brick_diffuse.jpg (dev)
+Water normals: examples/textures/waternormals.jpg (dev)
+Textures have been resized, desaturated, and/or recolored for this game.
+
+User-provided models (original upload names):
+pixel-fantasy-wooden-barrel.glb
+pixel-fantasy-long-timber-bench.glb (uploaded twice; identical bytes, reused)
+pixel-fantasy-sea-facing-opening-wall-remnant.glb
+pixel-fantasy-scaffold-kit.glb
+pixel-fantasy-timber-construction-kit.zip
+The timber kit includes a CC0-1.0 dedication (LICENSE.txt in this download).
+Barrel, bench and scaffold declare CC0 in embedded asset metadata; any embedded
+texture authorship notes are preserved inside the GLBs. The wall upload has no
+explicit license metadata: it is used as supplied by the user; no public-domain
+license is asserted for it. Refer to the original sources before reuse elsewhere.
+Only selected kit outputs are embedded: road deck, rails/posts/abutment, scaffold
+lookout demonstration and fence. All source modules and kit documentation remain in the
+development repository under src/assets/user/timber-kit.
+
+Meadow/water color tiles: generated with OpenAI image generation from the user's
+inline landscape/water references, normalized to 1024x1024 and edge blended.
+These are reference-derived new textures, not unchanged original image files.
+The normal map remains the Three.js water-normal texture credited above.
+
+Game-dev skill collection supplied by the user:
+https://github.com/gamedev-skills/awesome-gamedev-agent-skills (Apache-2.0).
+Used as development guidance. Applied-skills notes and asset manifest included.
+
+Animated character: Three.js examples/models/gltf/Soldier.glb, from Mixamo.
+https://threejs.org/examples/webgl_animation_skinning_blending.html
+https://www.mixamo.com/
+The Mixamo character and animations are embedded as game content, not licensed
+as standalone redistributable character assets. Mixamo/Adobe terms apply to
+the character. Do not extract and redistribute the character as an asset pack.
+
+Terrain, tree/needle geometry and textures, procedural grass, buildings,
+world-map drawing, gameplay code, glider, particles, procedural audio, and
+interface: authored/generated for Northreach.
+
+V4 ENVIRONMENT ASSETS
+All new GLBs and five modular kits were supplied by the user for integration.
+Selected source bytes, hashes, filenames and embedded copyright fields are
+recorded in asset-manifest.json. The home, timber, pier, river-rock and coastal
+ship kits include CC0-1.0 dedications; their licenses accompany the download.
+Those dedications do not automatically cover unrelated individual uploads.
+
+Individual models with explicit pending-clearance / NOT CC0 metadata:
+pixel-fantasy-limestone-cliff-face.glb
+pixel-fantasy-limestone-cliff-corner.glb
+pixel-fantasy-standing-king-effigy.glb
+pixel-fantasy-petrified-tree-snag.glb
+pixel-fantasy-hollow-veteran-oak-stump.glb
+Their metadata is preserved. This project does not assert that they are CC0 or
+that their outstanding third-party licensing has been cleared. Individual
+uploads without explicit licenses are used as supplied, not relabeled CC0.
+
+Distant oak/alder images are offline Blender Cycles renders of the supplied
+models. Original models are retained for close views. Static transforms and
+material batches are derived in memory, without replacing original GLB bytes.
+
+The six Lost Warrior uploads exceeded the tool's 32 MiB transfer limit and
+could not be downloaded/inspected. No Lost Warrior geometry or animations are
+claimed to be present. The Mixamo character above remains for player and NPCs;
+its original Idle/Walk/Run clips are blended. Attack, guard, draw/sheath and
+aerial poses are procedural offsets, not newly supplied motion-capture clips.
+
+V4 returns to the photographic grass texture from the Three.js examples
+examples/textures/terrain/grasslight-big.jpg; sRGB color maps and linear normal
+map data are treated separately. All original photo-surface credits above apply.
+New terrain blending, grass geometry, weather/sky/water shader extensions,
+quests, combat, interfaces and procedural audio were created for Northreach.

@@ -1,0 +1,4 @@
+CC0-1.0
+The owner dedicates the selected generated/authored consumer outputs in this package to the public domain under CC0 1.0 Universal.
+https://creativecommons.org/publicdomain/zero/1.0/
+Frozen provenance and upstream classifications are preserved; this is the owner’s output intent, not independent legal clearance of upstream tools or source archives.

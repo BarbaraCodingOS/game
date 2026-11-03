@@ -1,0 +1,4 @@
+CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Source provenance is recorded in manifest.json. Current approved-pixel source geometry/material bytes and derivative UV packaging only. No historical donor texture bytes are included.

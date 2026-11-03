@@ -1,0 +1,221 @@
+{
+  "date": "2026-11-03",
+  "method": "Same Chromium 155, 1280x800 viewport, cloud SwiftShader software renderer. Short forward-walking sample after startup; timing includes browser scheduling and software rasterization. V3 performance preset versus V4 Low. These are different scene contents and short samples, not a controlled hardware benchmark.",
+  "baselineV3": {
+    "browser": "155.0.8059.79",
+    "viewport": [
+      1280,
+      800
+    ],
+    "renderer": "SwiftShader software (cloud, not target desktop GPU)",
+    "meanFrameMs": 793.0166666666668,
+    "p95FrameMs": 866.6000000000004,
+    "frames": 12,
+    "tier": "performance",
+    "metrics": null,
+    "hotFunctions": [
+      {
+        "name": "(program)",
+        "url": "",
+        "samples": 5092
+      },
+      {
+        "name": "unlock",
+        "url": "game.js",
+        "samples": 48
+      },
+      {
+        "name": "ee",
+        "url": "game.js",
+        "samples": 4
+      },
+      {
+        "name": "noise",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "interpolate_",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "Tt",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "Lm",
+        "url": "game.js",
+        "samples": 1
+      },
+      {
+        "name": "evaluate",
+        "url": "game.js",
+        "samples": 1
+      },
+      {
+        "name": "accumulate",
+        "url": "game.js",
+        "samples": 1
+      },
+      {
+        "name": "slerpFlat",
+        "url": "game.js",
+        "samples": 1
+      },
+      {
+        "name": "updateMatrix",
+        "url": "game.js",
+        "samples": 1
+      },
+      {
+        "name": "compose",
+        "url": "game.js",
+        "samples": 1
+      },
+      {
+        "name": "updateMatrixWorld",
+        "url": "game.js",
+        "samples": 1
+      },
+      {
+        "name": "multiplyMatrices",
+        "url": "game.js",
+        "samples": 1
+      }
+    ]
+  },
+  "finalV4": {
+    "browser": "155.0.8059.79",
+    "viewport": [
+      1280,
+      800
+    ],
+    "renderer": "SwiftShader software (cloud, not target desktop GPU)",
+    "meanFrameMs": 809.6833333333334,
+    "p95FrameMs": 883.2999999999993,
+    "frames": 12,
+    "tier": "low",
+    "metrics": {
+      "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "software": true,
+      "frames": 20,
+      "meanFrameMs": 826.1999999999255,
+      "p95FrameMs": 2883.2,
+      "updateMs": 0.9000000022351742,
+      "renderSubmitMs": 3.599999997764826,
+      "drawCalls": 155,
+      "triangles": 310933,
+      "grass": {
+        "cached": 25,
+        "queued": 0,
+        "lastBuildMs": 0.09999999776482582,
+        "maxBuildMs": 0.8999999985098839
+      },
+      "cascades": 0,
+      "terrainChunks": 59
+    },
+    "hotFunctions": [
+      {
+        "name": "(program)",
+        "url": "",
+        "samples": 4773
+      },
+      {
+        "name": "jt",
+        "url": "game.js",
+        "samples": 3
+      },
+      {
+        "name": "mm",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "xt",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "xt",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "a",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "Ss",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "updateMatrixWorld",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "_setValue_fromArray_setMatrixWorldNeedsUpdate",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "x",
+        "url": "game.js",
+        "samples": 2
+      },
+      {
+        "name": "xt",
+        "url": "game.js",
+        "samples": 1
+      },
+      {
+        "name": "xt",
+        "url": "game.js",
+        "samples": 1
+      },
+      {
+        "name": "xt",
+        "url": "game.js",
+        "samples": 1
+      },
+      {
+        "name": "o",
+        "url": "game.js",
+        "samples": 1
+      }
+    ]
+  },
+  "comparison": {
+    "baselineMeanFrameMs": 793.02,
+    "finalMeanFrameMs": 809.68,
+    "meanFrameChangePercent": 2.1,
+    "finalApproxFps": 1.24,
+    "interpretation": "Software rendering remains the bottleneck. The final sample is about 2% slower than V3; no FPS improvement is established. Earlier V4 samples varied around 0.8\u20130.9 seconds/frame. New visual/gameplay work fits within similar cloud rendering cost, but this is far below playable frame rates on this software-only machine."
+  },
+  "cpuAndScene": {
+    "lastSampleUpdateMs": 0.9,
+    "lastSampleRenderSubmissionMs": 3.6,
+    "maxObservedGrassPatchBuildMs": 0.9,
+    "drawCalls": 155,
+    "triangles": 310933,
+    "terrainSections": 59,
+    "note": "CPU values are the last telemetry sample, not average or tail-latency guarantees. Render submission time is not GPU execution time. Rolling in-game frame statistics also include startup warmup; use the separate frame-sample fields for the walking comparison."
+  },
+  "optimizations": [
+    "Material/geometry batching and instancing preserve original GLB textures, vertex colors and extra UV channels.",
+    "Bounded grass LRU cache, velocity-biased queue and 1.6ms generation budget.",
+    "Actual oak/alder model impostors and movement-threshold instance updates.",
+    "Prebuilt/frustum-culled terrain sections with matching physics.",
+    "Nearest-three pooled local lights; scalable cascaded shadows, AO and planar water refresh.",
+    "Low disables shadows, reflections and postprocessing and lowers resolution/vegetation."
+  ],
+  "limits": [
+    "No target Mac or Brave hardware-GPU benchmark was available. Stable 60 FPS is unverified.",
+    "High/Ultra render correctness was tested; their hardware frame rates were not measured.",
+    "Brief samples are sensitive to warmup and cloud scheduling; do not interpret small differences as a performance gain."
+  ]
+}
