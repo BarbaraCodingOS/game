@@ -1,0 +1,6 @@
+CC0 1.0 Universal
+
+The owner dedicates the included consumer assets and public documentation to the public domain under CC0 1.0.
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Provided without warranty. This download contains the selected runtime outputs; editable source archives are not included.

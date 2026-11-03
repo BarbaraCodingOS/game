@@ -1,0 +1,46 @@
+NORTHREACH v3 — THIRD-PARTY ASSETS
+
+Three.js code and example texture assets:
+https://github.com/mrdoob/three.js
+Copyright Three.js authors. MIT license (see THREE-LICENSE.txt).
+
+Rock detail: examples/textures/terrain/backgrounddetailed6.jpg (r110)
+Timber: examples/textures/hardwood2_diffuse.jpg (dev)
+Masonry: examples/textures/brick_diffuse.jpg (dev)
+Water normals: examples/textures/waternormals.jpg (dev)
+Textures have been resized, desaturated, and/or recolored for this game.
+
+User-provided models (original upload names):
+pixel-fantasy-wooden-barrel.glb
+pixel-fantasy-long-timber-bench.glb (uploaded twice; identical bytes, reused)
+pixel-fantasy-sea-facing-opening-wall-remnant.glb
+pixel-fantasy-scaffold-kit.glb
+pixel-fantasy-timber-construction-kit.zip
+The timber kit includes a CC0-1.0 dedication (LICENSE.txt in this download).
+Barrel, bench and scaffold declare CC0 in embedded asset metadata; any embedded
+texture authorship notes are preserved inside the GLBs. The wall upload has no
+explicit license metadata: it is used as supplied by the user; no public-domain
+license is asserted for it. Refer to the original sources before reuse elsewhere.
+Only selected kit outputs are embedded: road deck, rails/posts/abutment, scaffold
+lookout demonstration and fence. All source modules and kit documentation remain in the
+development repository under src/assets/user/timber-kit.
+
+Meadow/water color tiles: generated with OpenAI image generation from the user's
+inline landscape/water references, normalized to 1024x1024 and edge blended.
+These are reference-derived new textures, not unchanged original image files.
+The normal map remains the Three.js water-normal texture credited above.
+
+Game-dev skill collection supplied by the user:
+https://github.com/gamedev-skills/awesome-gamedev-agent-skills (Apache-2.0).
+Used as development guidance. Applied-skills notes and asset manifest included.
+
+Animated character: Three.js examples/models/gltf/Soldier.glb, from Mixamo.
+https://threejs.org/examples/webgl_animation_skinning_blending.html
+https://www.mixamo.com/
+The Mixamo character and animations are embedded as game content, not licensed
+as standalone redistributable character assets. Mixamo/Adobe terms apply to
+the character. Do not extract and redistribute the character as an asset pack.
+
+Terrain, tree/needle geometry and textures, procedural grass, buildings,
+world-map drawing, gameplay code, glider, particles, procedural audio, and
+interface: authored/generated for Northreach.
